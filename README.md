@@ -1,4 +1,7 @@
 # Chronos - Timer and sheduler
+
+work in progress
+
 ## For node JS or javascript.
 
 Call the method with a time expression string and a callback function. 
