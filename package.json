@@ -1,0 +1,32 @@
+{
+  "name": "e-chron",
+  "version": "0.8.1",
+  "description": "Timer and scheduler for node JS.\n Call with a time expression string and a callback function.\n The time expression can produce a more complex reoccurring time pattern or a one-time shot, within years, seconds or even milliseconds.\nThis is not cron. Rather it is an attempt at updating the very successful cron syntax.\n This version have a time resolution in milliseconds, but the syntax supports higher resolutions.",
+  "main": "chronos.js",
+  "scripts": {
+    "test": "test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/paragi/chronos"
+  },
+  "keywords": [
+    "node",
+    "timer",
+    "scheduler",
+    "seconds",
+    "milliseconds",
+    "job",
+    "cron",
+    "extended cron format",
+    "javascript",
+    "worker",
+    "task",
+    "queue",
+    "poller"
+  ],
+  "author": "Simon Riget @Paragi",
+  "bugs": {
+    "url": "https://github.com/paragi/chronos/issues"
+  }
+}
