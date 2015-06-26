@@ -32,7 +32,7 @@ The epoch timestamp is seconds since 1970-01-01 UTC with fractions of second as 
 
 	@<epoch>[.<faction of second>]
 
-** Field syntax: 	`[!][-]<value>[-<value>]|[,<value>] | /<value> | *` **
+**Field syntax: 	`[!][-]<value>[-<value>]|[,<value>] | /<value> | *`**
 ```
 " " : field separator
 *   : all values. Flags will be ignored.
@@ -74,7 +74,7 @@ Unspecified minor fields are assumed to have the lowest possible value
 
 ### API
 
-** chronos.add(<object>) **
+**chronos.add(<object>)**
 Takes an object as parameter:
 ```
 {
@@ -92,7 +92,7 @@ Returns a result object:
   id:	    integer used to identify the timer
 ```
 
-** chronos.remove(id) **
+**chronos.remove(id)**
 where id is the value returned from chronos.add
 
 Returns a result object:
@@ -103,21 +103,21 @@ Returns a result object:
 }
 ```
 
-** chronos.get([id]) **
+**chronos.get([id])**
 where the optional id is the value returned from chronos.add
 
 Returnes either a chronos timer object if id is given, or an array of all active timer objects.
 
 ### Settings
-** chronos.timeResolution (integer) **
+**chronos.timeResolution (integer)**
 This is the minimum time resolution for an expression. Minimum value is 1 ms. default is 2 ms.
 This should be more the the execution time and delays do to load, of the intepreter. 
 
-** chronos.maxTimerDelay (integer) **
+**chronos.maxTimerDelay (integer)**
 Maximum run time of a setTimeout call. Some javascripts engines cant handle more then 32 bit = 0x7FFFFFF. thats about 28 days. default is 86400000 = 1 day.
 When this time have elapsed, the timer event are reevaluated.
 
-## Use with node JS
+## With node JS
 #### Install
 ```bash
 $ npm install e-chron
@@ -134,7 +134,7 @@ var res2=chronos.remove(res1.id);
 ```
 
 
-## Use in javascript
+## With HTML & javascript
 ```html
 <script type="text/JavaScript" src="chronos.js"></script>
 <script>
@@ -145,7 +145,3 @@ var res1=chronos.add({timex:”* * * 12”,  action:function(){alert(“hello wo
 var res2=chronos.remove(res1.id);
 </script>
 ```
-<<<<<<< HEAD
-
-=======
->>>>>>> 40688aa392e11b1c01766ee72ebba2dc35733d4e
