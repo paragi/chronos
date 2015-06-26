@@ -125,22 +125,16 @@ var chronos = {};
 if(typeof module !== 'undefined') module.exports = exports = chronos;
 
 // Settings
-chronos.startupFile='';   // File to store permanent time expressions
+chronos.file='';   // File to store permanent time expressions
 chronos.timeResolution=2; // Min 1 ms. This is the minimum time between execution.
-chronos.maxTimerDelay=0x7FFFFFFF // some javascripts engines cant handle more then 32 bit
+chronos.maxTimerDelay=86400000 // some javascripts engines cant handle more then 32 bit 0x7FFFFFF - about 28 days
 
 // Globals
 chronos.list={};
 
-var MAXDELAY = 2147483647; // The maximum number of milliseconds setTimeout will wait.
-// var MAXDELAY = Number.MAX_SAFE_INTEGER
-
-
 // Job object
 //    timex:  Time expression
-//    opt:    options
 //    action: function to execute
-//    active: true/false
 
 //    next:   Next execution time
 //    timer:  handle to setTimeOut
@@ -156,12 +150,8 @@ var MAXDELAY = 2147483647; // The maximum number of milliseconds setTimeout will
 
   Parameter is an associative array:
     timex: Time expression
-    opt: options
     action: function to execute
-    param: parameters parsed action function
-
-  options:
-    p: permanent. Save timer job in startup file, (if defined)
+    p: parameters parsed action function
 
 \*============================================================================*/
 chronos.add=function(p){
@@ -178,15 +168,15 @@ chronos.add=function(p){
   // Define the timeout Shortened flag
   chronos.list[chronos.nextId].timeoutShortened=false;
 
-  // Add permanent job to file 
-  if(typeof p.opt === 'string' && p.opt.indexOf('p')>=0){
-    // Look for match in file
-    // concatanate file....
-  }
-
   // Start timed execution
   var error=chronos._start(chronos.nextId);
   if(error.length>0) return {"result":"failed","error":error,"id":""};
+
+  // Add to static file 
+  if(typeof process === 'object' && chronos.file.length>0){
+    // Look for match in file
+    // concatanate file....
+  }
 
   return {"result":"ok","error":"","id":chronos.nextId++};
 } 
@@ -196,11 +186,17 @@ chronos.remove=function(id){
   if(typeof chronos.list[id] !== "undefined"){
     clearTimeout(chronos.list[id].timer);
     delete chronos.list[id];
+
+    // Delete from static file 
+    if(typeof process === 'object' && chronos.file.length>0){
+      // Look for match in file
+      // splice file....
+    }
   }
   return;
 }
 
-chronos.list=function(id){
+chronos.get=function(id){
   if(typeof id ==='number') return chronos.list[id];
   return chronos.list;
 }

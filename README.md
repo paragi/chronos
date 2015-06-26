@@ -1,22 +1,25 @@
-# Chronos - Timer and sheduler
-
-work in progress
-
+# Chronos - Timer and scheduler
 ## For node JS or javascript.
 
-Call the method with a time expression string and a callback function. 
+### Features
+* Extensively improved cron-like syntax (Not compatible)
+* Milliseconds resolution
+* Recalculate long running timers, to improve accuracy
+* No dependencies
+* Written for both node JS and browser inclusion
+* Time expressions include range, set, timestamp, weekday, yearday 
 
-The time expression can produce a complex reoccurring time pattern or a one-time shot, within years, seconds or even milliseconds.
-This is not cron. Rather it is an attempt at updating the very successful cron syntax.
 
-Chronos are based on the setTimeout function. It is not very precise. At present it seems to have an accuracy within 25 ms, without significant process load.  However it seems to defer execution time, during process load. In some cases that I preferable, but it makes the timing less precise. 
+Chronos are based on the setTimeout function. It is not very precise. At present it seems to have an accuracy within 2 ms in node and 25 ms i most browsers.  However it seems to defer execution time, during process load. In some cases that I preferable, but it makes the timing less precise. 
 To increase precision, you would have to rewrite the function with some form of correction to real time.
 
-### To add a timed job every day at noon:
+### Example
+To add a timed job every day at noon:
 
 ```javascript
 chronos.add({timex:”* * * 12”,  action:function(){console.log(“hello wolrd”)}});
 ```
+
 ## Time expression Syntax
 The basic syntax is a series of fields specifying the time(s):
 
@@ -45,7 +48,7 @@ w: day of week 1-7  (1 is Monday)
 ```
 Unspecified minor fields are assumed to have the lowest possible value
 
-##Note: 
+## Note: 
 - Time expression are in local time where as time stamps are in UTC
 - Month and weekday use another offset then the javascript Date function:
 - Month 1 is January 
@@ -69,17 +72,18 @@ Unspecified minor fields are assumed to have the lowest possible value
 | Every 10 minutes in the day time|  * * * 8-18 /10
 
 
-### Functions
+### API
 
-####Add job
+#### Add
 ```
 result = chronos.add(<object>);
 
-object:
+object{
 * timex: <time expression>
 * action: <function to execute>
   param: <an object parsed top the function>
   opt:	<options>
+}
 
 * mandatory elements.
 ```
@@ -91,16 +95,30 @@ error: 	<an failure explanation> or null
 id:	<integer used to identify the timer>
 ```
 
-#### Remove job
+#### Remove
 `result = chronos.remove(id);`
 
-Id is the value returned with chronos.add
+id is the value returned with chronos.add
 
+#### get
+`var list = chronos.get([id]);`
+
+Returnes either a chronos timer object ifid is given, or an array of all active timer objects.
+
+
+#### Settings
+chronos.timeResolution (integer) 
+This is the minimum time resolution for an expression. Minimum value is 1 ms. default is 2 ms.
+This should be more the the execution time and delays do to load, of the intepreter. 
+
+chronos.maxTimerDelay (integer)
+Maximum run time of a setTimeout call. Some javascripts engines cant handle more then 32 bit = 0x7FFFFFF. thats about 28 days. default is 86400000 = 1 day.
+When this time have elapsed, the timer event are reevaluated.
 
 ## Use with node JS
 #### Install
 ```bash
-$ npm install chronos
+$ npm install e-chron
 ```
 #### Use
 ```js

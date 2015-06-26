@@ -231,7 +231,7 @@ function test3(){
   List active timers
 \*============================================================================*/
 function list(){
-  var list=chronos.list();
+  var list=chronos.get();
   var html="<table>";
   for(var i in list){
     html+="<tr><td> "+i+" </td><td><table>";
