@@ -297,7 +297,7 @@ chronos._run=function(id){
 
   // Execute action function
   if(!chronos.list[id].timeoutShortened){
-    chronos.list[id].action(chronos.list[id].param);
+    chronos.list[id].action(chronos.list[id].p);
   }
 
   // Restart timer
