@@ -75,7 +75,7 @@ Unspecified minor fields are assumed to have the lowest possible value
 
 ## API
 ---
-##### chronos.add(<object>)
+##### chronos.add(object)
 Takes an object as parameter:
 ```
 {
