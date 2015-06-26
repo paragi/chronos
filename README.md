@@ -32,7 +32,7 @@ The epoch timestamp is seconds since 1970-01-01 UTC with fractions of second as 
 
 	@<epoch>[.<faction of second>]
 
-##### Field syntax: 	`[!][-]<value>[-<value>]|[,<value>] | /<value> | *`
+** Field syntax: 	`[!][-]<value>[-<value>]|[,<value>] | /<value> | *` **
 ```
 " " : field separator
 *   : all values. Flags will be ignored.
@@ -74,44 +74,46 @@ Unspecified minor fields are assumed to have the lowest possible value
 
 ### API
 
-#### Add
+** chronos.add(<object>) **
+Takes an object as parameter:
 ```
-result = chronos.add(<object>);
-
-object{
-* timex: <time expression>
-* action: <function to execute>
-  param: <an object parsed top the function>
-  opt:	<options>
+{
+  timex:  time expression
+  action: function to execute
+  p:      an object parsed to the action function (optional)
 }
-
-* mandatory elements.
 ```
 
 Returns a result object:
 ```
-result: “ok” or null
-error: 	<an failure explanation> or null
-id:	<integer used to identify the timer>
+{
+  result: “ok” or null
+  error: 	a failure explanation or null
+  id:	    integer used to identify the timer
 ```
 
-#### Remove
-`result = chronos.remove(id);`
+** chronos.remove(id) **
+where id is the value returned from chronos.add
 
-id is the value returned with chronos.add
+Returns a result object:
+```
+{
+  result: “ok” or null
+  error: 	a failure explanation or null
+}
+```
 
-#### get
-`var list = chronos.get([id]);`
+** chronos.get([id]) **
+where the optional id is the value returned from chronos.add
 
-Returnes either a chronos timer object ifid is given, or an array of all active timer objects.
+Returnes either a chronos timer object if id is given, or an array of all active timer objects.
 
-
-#### Settings
-chronos.timeResolution (integer) 
+### Settings
+** chronos.timeResolution (integer) **
 This is the minimum time resolution for an expression. Minimum value is 1 ms. default is 2 ms.
 This should be more the the execution time and delays do to load, of the intepreter. 
 
-chronos.maxTimerDelay (integer)
+** chronos.maxTimerDelay (integer) **
 Maximum run time of a setTimeout call. Some javascripts engines cant handle more then 32 bit = 0x7FFFFFF. thats about 28 days. default is 86400000 = 1 day.
 When this time have elapsed, the timer event are reevaluated.
 
