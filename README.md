@@ -91,7 +91,9 @@ Returns a result object:
   result: “ok” or null
   error: 	a failure explanation or null
   id:	    integer used to identify the timer
+}
 ```
+
 
 ##### chronos.remove(id)
 where id is the value returned from chronos.add
@@ -103,6 +105,7 @@ Returns a result object:
   error: 	a failure explanation or null
 }
 ```
+
 
 ##### chronos.get([id])
 where the optional id is the value returned from chronos.add
