@@ -3,7 +3,12 @@
 \*============================================================================*/
 // For node JS
 if(typeof process !== 'undefined'){
-  var chronos=require('./chronos');
+  try {
+    var chronos=require('e-chron');
+  }
+  catch(e){
+    var chronos=require('./chronos');
+  }
 
 // For HTML
 }else{
