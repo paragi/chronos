@@ -17,7 +17,7 @@ To increase precision, you would have to rewrite the function with some form of 
 To add a timed job every day at noon:
 
 ```javascript
-chronos.add(”* * * 12”, function(){console.log(“hello wolrd”)});
+chronos.add(”* * * 12”, function(){console.log(“hello - it's noon again”)});
 ```
 
 ## Time expression Syntax
