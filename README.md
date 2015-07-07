@@ -25,6 +25,7 @@ chronos.add(”* * * 12”, function(){console.log(“hello wolrd”)});
 The basic syntax is a series of fields specifying the time(s):
 
  `<year> <month> <day> <hour> <minute> <second> <millisecond> <microsecond> ...`
+
 or a time stamp.
 
 Each field contain wild-cards, ranges, sets, not flags and every flags. Plus some special flags for year days and week days.
@@ -54,8 +55,6 @@ Unspecified minor fields are assumed to have the lowest possible value
 - Month and weekday use another offset then the javascript Date function:
 - Month 1 is January 
 - Week day 1-7 starting with Monday 
-- In the current implementation, using javascripts settimeout, the accuracy is 
-  likely within 25 ms.
 
  
 ### Examples:
