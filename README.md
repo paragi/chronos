@@ -17,7 +17,7 @@ To increase precision, you would have to rewrite the function with some form of 
 To add a timed job every day at noon:
 
 ```javascript
-chronos.add({timex:”* * * 12”,  action:function(){console.log(“hello wolrd”)}});
+chronos.add(”* * * 12”, function(){console.log(“hello wolrd”)});
 ```
 
 ## Time expression Syntax
@@ -75,15 +75,7 @@ Unspecified minor fields are assumed to have the lowest possible value
 
 ## API
 ---
-##### chronos.add(object)
-Takes an object as parameter:
-```
-{
-  timex:  time expression
-  action: function to execute
-  p:      an object parsed to the action function (optional)
-}
-```
+##### chronos.add(timeExpression, callBack [,parameterToCallBack])
 
 Returns a result object:
 ```
@@ -134,7 +126,7 @@ $ npm install e-chron
 var chronos = require('chronos');
 
 // Add
-var res1=chronos.add({timex:”* * * 12”,  action:function(){console.log(“hello wolrd”)}});
+var res1=chronos.add(”* * * 12”, function(){console.log(“hello wolrd”)});
 
 // Remove
 var res2=chronos.remove(res1.id);
@@ -151,7 +143,7 @@ Copy files to folder.
 <script type="text/JavaScript" src="chronos.js"></script>
 <script>
 // Add
-var res1=chronos.add({timex:”* * * 12”,  action:function(){alert(“hello wolrd”)}});
+var res1=chronos.add(”* * * 12”, function(){alert(“hello wolrd”)});
 
 // Remove
 var res2=chronos.remove(res1.id);
