@@ -26,7 +26,7 @@ function timerIn(ms,action,p){
   ta.setMilliseconds(ta.getMilliseconds()+ms);
   ta.getTime();
   var str= Math.floor(ta.getTime()/1000) + "." + ("00" + Math.round(ta.getTime()%1000)).slice(-3);
-  var res=chronos.add({"timex":"@" + str,"action":action,"p":p});
+  var res=chronos.add("@" + str,action,p);
 }
 
 /*============================================================================*\
@@ -58,7 +58,7 @@ function test1(){
     }
   }
 
-  var res=chronos.add({"timex":"* * * * * * /50","action":action,p:":c)"});
+  var res=chronos.add("* * * * * * /50",action,":c)");
 
   // deactivate after 5 sec.
   var fid=res.id;
@@ -206,7 +206,7 @@ function test3(){
   var tmp=chronos.maxTimerDelay;
   chronos.maxTimerDelay=1000;
   var now=(new Date()).getTime()/1000;
-  chronos.add({"timex":"@"+(now+5.2),"action":defTest,p:now+5.2});
+  chronos.add("@"+(now+5.2),defTest,now+5.2);
 
   function defTest(p){
     var now=(new Date()).getTime();

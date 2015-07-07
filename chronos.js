@@ -1,7 +1,9 @@
 /*============================================================================*\
 Chronos - Timer and sheduler
-
 Timer and scheduler for node JS.
+
+syntax: chronos.add(<time expression>, <call back>, <parameter to call back>);
+
 
 Call with a time expression string and a callback function. 
 The time expression can produce a more complex reoccurring time pattern or a one-time shot, within years, seconds or even milliseconds.
@@ -23,7 +25,7 @@ To increase precision, you would have to rewrite the function with some form of 
 To add a timed job every day at noon:
 
 [code]
-chronos.add({timex:”* * * 12”,  action:function(){console.log(“hello wolrd”)}});
+chronos.add(”* * * 12”,function(){console.log(“hello wolrd”)});
 [/code]
 
 Each field can be substituted with a wild card “*” , have flags, ranges or a set of values.
@@ -85,17 +87,9 @@ Examples:
 
 Functions:
 
-chronos.add(<object>);
+chronos.add(<time expression>, <call back>, <parameter to call back>);
 
 Add a single shot or reoccurring job
-
-object:
-* timex: <time expression>
-* action: <function to execute>
-param: <an object parsed top the function>
-opt:	<options>
-
-* mandatory elements.
 
 Returns an object:
 
@@ -154,17 +148,19 @@ chronos.list={};
     p: parameters parsed action function
 
 \*============================================================================*/
-chronos.add=function(p){
+chronos.add=function(timex,action,param){
   // validate parameters
-  if( typeof p !== 'object')
-    return {"result":"failed","error":"Parameter not an associative array","id":""};
-  if(typeof p.action !== 'function') 
-    return {"result":"failed","error":"Action is not a function","id":""};
-  if(typeof p.timex !== 'string') 
+  if(typeof timex !== 'string') 
     return {"result":"failed","error":"time expression not a string","id":""};
+  if(typeof action !== 'function') 
+    return {"result":"failed","error":"Action is not a function","id":""};
 
-  // Add to job entry to list; 
-  chronos.list[chronos.nextId]=p;
+  // Add to job entry to list;
+  chronos.list[chronos.nextId]={}; 
+  chronos.list[chronos.nextId].timex=timex;
+  chronos.list[chronos.nextId].action=action;
+  chronos.list[chronos.nextId].param=param;
+
   // Define the timeout Shortened flag
   chronos.list[chronos.nextId].timeoutShortened=false;
 
@@ -297,7 +293,7 @@ chronos._run=function(id){
 
   // Execute action function
   if(!chronos.list[id].timeoutShortened){
-    chronos.list[id].action(chronos.list[id].p);
+    chronos.list[id].action(chronos.list[id].param);
   }
 
   // Restart timer
