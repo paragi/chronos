@@ -9,9 +9,12 @@
 * Written for both node JS and browser inclusion
 * Time expressions include range, set, timestamp, weekday, yearday 
 
+Chronos are based on the setTimeout function. 
 
-Chronos are based on the setTimeout function. It is not very precise. At present it seems to have an accuracy within 2 ms in node and 25 ms i most browsers.  However it seems to defer execution time, during process load. In some cases that I preferable, but it makes the timing less precise. 
-To increase precision, you would have to rewrite the function with some form of correction to real time.
+### Precission
+At present it seems to have an accuracy within 2 ms in node and up to 25 ms i most browsers.
+It seems that execution is defered somewhat during process load.
+
 
 ### Example
 To add a timed job every day at noon:
@@ -80,8 +83,8 @@ Returns a result object:
 ```
 {
   result: “ok” or null
-  error: 	a failure explanation or null
-  id:	    integer used to identify the timer
+  error:  A failure explanation or null
+  id:	  integer used to identify the timer
 }
 ```
 
@@ -93,7 +96,7 @@ Returns a result object:
 ```
 {
   result: “ok” or null
-  error: 	a failure explanation or null
+  error:  A failure explanation or null
 }
 ```
 
