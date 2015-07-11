@@ -2,12 +2,12 @@
 ## For node JS or javascript.
 
 ### Features
-* Extensively improved cron-like syntax (Not compatible)
+* Improved cron-like syntax (Not compatible)
 * Milliseconds resolution
 * Recalculate long running timers, to improve accuracy
 * No dependencies
 * Written for both node JS and browser inclusion
-* Time expressions include range, set, timestamp, weekday, yearday 
+* Time expressions include ranges, sets, timestamps, weekdays, yeardays and more 
 
 Chronos are based on the setTimeout function. 
 
