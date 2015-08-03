@@ -1,6 +1,9 @@
 # Chronos - Timer and scheduler
 ## For node JS or javascript.
 
+### Contributor wanted
+Please do not hesitate to add your contribution of any kind to this project 
+
 ### Features
 * Improved cron-like syntax (Not compatible)
 * Milliseconds resolution
