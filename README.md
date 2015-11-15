@@ -2,12 +2,9 @@
 # Has changed name to Timexe. please visit the new reposotory at https://github.com/paragi/timexe
 
 
-## this repository is no longer maintained!!
+## this repositiry is no longer maintained!!
 
-## For node JS or javascript.
 
-### Contributor wanted
-Please do not hesitate to add your contribution of any kind to this project 
 
 ### Features
 * Improved cron-like syntax (Not compatible)
