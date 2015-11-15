@@ -2,7 +2,7 @@
 # Has changed name to Timexe. please visit the new reposotory at https://github.com/paragi/timexe
 
 
-## this reposotory is no longer maintained!!
+## this repository is no longer maintained!!
 
 ## For node JS or javascript.
 
