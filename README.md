@@ -128,7 +128,7 @@ $ npm install e-chron
 ```
 #### Use
 ```js
-var chronos = require('chronos');
+var chronos = require('e-chron');
 
 // Add
 var res1=chronos.add(”* * * 12”, function(){console.log(“hello wolrd”)});
