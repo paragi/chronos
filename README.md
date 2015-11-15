@@ -2,7 +2,6 @@
 # Has changed name to Timexe. please visit the new reposotory at https://github.com/paragi/timexe
 
 
-## this repositiry is no longer maintained!!
 
 
 
