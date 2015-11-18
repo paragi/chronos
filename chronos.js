@@ -520,7 +520,8 @@ chronos.nextTime = function(tex,strict,startfromTime){
           last=7;
           lastdom=new Date(date.getFullYear(),date.getMonth()+1,0).getDate();
           // Get week day of current next time  
-          nt[10]=((date.getDay()+7)%8+1);
+          //[10]=((date.getDay()+7)%8+1);
+          nt[10]=(((date.getDay()+6)%7)+1); 
 
         // Day of year
         }else if(field[fpc].flags.indexOf('y')>=0){
