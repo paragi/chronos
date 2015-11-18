@@ -1,6 +1,6 @@
 {
   "name": "e-chron",
-  "version": "0.9.3",
+  "version": "0.9.4",
   "description": "Yet another cron clone – but this one is better :o)  - new improved syntax – milliseconds resolution – both for node JS and browser",
   "main": "chronos.js",
   "scripts": {
