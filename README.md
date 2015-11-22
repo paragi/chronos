@@ -1,6 +1,8 @@
 #### Chronos - Timer and scheduler
 
-## Chronos has changed name to **Timexe**. 
+Chronos has changed name to 
+## Timexe. 
+
 please visit the new reposotory:
 github: [github.com/paragi/timexe](https://github.com/paragi/timexe)
 npm: [npmjs.com/package/timexe](https://www.npmjs.com/package/timexe)
