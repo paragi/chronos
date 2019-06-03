@@ -4,29 +4,16 @@
   "description": "Yet another cron clone – but this one is better :o)  - new improved syntax – milliseconds resolution – both for node JS and browser",
   "main": "chronos.js",
   "scripts": {
-    "test": "test.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/paragi/chronos"
+    "url": "git+https://github.com/paragi/chronos.git"
   },
-  "keywords": [
-    "poller"
-    "queue",
-    "task",
-    "worker",
-    "job",
-    "cron",
-    "extended cron format",
-    "javascript",
-    "seconds",
-    "milliseconds",
-    "scheduler",
-    "timer",
-    "node",
-  ],
-  "author": "Simon Riget @Paragi",
+  "author": "",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/paragi/chronos/issues"
-  }
+  },
+  "homepage": "https://github.com/paragi/chronos#readme"
 }
